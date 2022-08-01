@@ -22,7 +22,7 @@ public class HbmRun {
             session.beginTransaction();
             Candidate one = Candidate.of("Pavel", "java", 3500);
             Candidate two = Candidate.of("Pavel", "java", 3500);
-            Candidate three = Candidate.of("Andrey", "pyton", 3400);
+            Candidate three = Candidate.of("Andrey", "python", 3400);
             session.save(one);
             session.save(two);
             session.save(three);
@@ -36,6 +36,9 @@ public class HbmRun {
             Query query = session.createQuery("from Candidate c where c.id = :fId");
             query.setParameter("fId", 2);
             System.out.println(query.uniqueResult());
+            session.createQuery("from Candidate c where c.name = :fName")
+                    .setParameter("fName", "Pavel")
+                            .list().forEach(System.out::println);
             IntStream.range(1, 4).forEach(s -> session.createQuery("delete Candidate c where c.id = :fId")
                         .setParameter("fId", s).executeUpdate());
             session.getTransaction().commit();

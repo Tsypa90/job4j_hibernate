@@ -17,10 +17,10 @@
         <property name="hibernate.hbm2ddl.auto">create</property>
 
         <mapping class="ru.job4j.hibernate.Candidate" />
-        <mapping class="ru.job4j.hibernate.Model" />
-        <mapping class="ru.job4j.hibernate.Brand" />
         <mapping class="ru.job4j.hibernate.manytomany.Book" />
         <mapping class="ru.job4j.hibernate.manytomany.Author" />
+        <mapping class="ru.job4j.hibernate.lazy.Brand" />
+        <mapping class="ru.job4j.hibernate.lazy.Model" />
 
     </session-factory>
 </hibernate-configuration>

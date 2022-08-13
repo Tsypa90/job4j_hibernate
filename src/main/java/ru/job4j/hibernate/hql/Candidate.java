@@ -1,4 +1,4 @@
-package ru.job4j.hibernate;
+package ru.job4j.hibernate.hql;
 
 import javax.persistence.*;
 import java.util.Objects;
@@ -12,6 +12,8 @@ public class Candidate {
     private String name;
     private String experience;
     private double salary;
+    @OneToOne(cascade = CascadeType.ALL)
+    private VacancyBase vacancyBase;
 
     public static Candidate of(String name, String experience, double salary) {
         Candidate candidate = new Candidate();
@@ -53,6 +55,14 @@ public class Candidate {
         this.salary = salary;
     }
 
+    public VacancyBase getVacancyBase() {
+        return vacancyBase;
+    }
+
+    public void setVacancyBase(VacancyBase vacancyBase) {
+        this.vacancyBase = vacancyBase;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -72,10 +82,12 @@ public class Candidate {
 
     @Override
     public String toString() {
-        return "Candidate{" + "id=" + id
+        return "Candidate{"
+                + "id=" + id
                 + ", name='" + name + '\''
                 + ", experience='" + experience + '\''
                 + ", salary=" + salary
+                + ", vacancyBase=" + vacancyBase
                 + '}';
     }
 }

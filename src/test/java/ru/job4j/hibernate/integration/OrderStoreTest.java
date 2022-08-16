@@ -59,8 +59,8 @@ public class OrderStoreTest {
     @Test
     public void whenSaveThreeOrdersAndFindAll() {
         OrderStore store = new OrderStore(pool);
-        List<Order> orders = List.of(Order.of("first", "first")
-                , Order.of("second", "second"), Order.of("third", "third"));
+        List<Order> orders = List.of(Order.of("first", "first"),
+                Order.of("second", "second"), Order.of("third", "third"));
 
         orders.forEach(store::save);
 
@@ -92,8 +92,8 @@ public class OrderStoreTest {
     @Test
     public void whenSaveTwoWithSameNamesAndGetTwo() {
         OrderStore store = new OrderStore(pool);
-        List<Order> orders = List.of(Order.of("first", "first")
-                , Order.of("first", "first"));
+        List<Order> orders = List.of(Order.of("first", "first"),
+                Order.of("first", "first"));
         orders.forEach(store::save);
         var rsl = store.findByName("first");
         assertThat(rsl, is(orders));
